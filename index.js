@@ -39,7 +39,7 @@
     // HOW TO CONNECT DB TO NODE ENDS
     
     app.get('/', (request,response) => {
-        response.send("Hello, !!!!!!");
+        response.send("Hello, ***");
     })
 
     // /movies - all the movies - done
