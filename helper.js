@@ -12,6 +12,11 @@ import { client } from "./index.js";
  async function createMovies(data) {
     return await client.db("test").collection("movies").insertMany(data);
 }
+
+async function createMoviesone(data) {
+    return await client.db("test").collection("movies").insertOne(data);
+}
+
  async function deleteMovieById(id) {
     return await client
         .db("test")
@@ -38,4 +43,5 @@ export {
     deleteMovieById,
     UpdateMovieById,
     getMovieById,
+    createMoviesone,
 };
