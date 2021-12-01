@@ -16,13 +16,13 @@ import { client } from "./index.js";
     return await client
         .db("test")
         .collection("movies")
-        .deleteOne({ id: id });
+        .deleteOne({ _id:  ObjectId(id) });
 }
  async function UpdateMovieById(id, data) {
     return await client
         .db("test")
         .collection("movies")
-        .updateOne({ id: id }, { $set: data });
+        .updateOne({ _id:  ObjectId(id) }, { $set: data });
 }
  async function getMovieById(id) {
      console.log("***", id)
