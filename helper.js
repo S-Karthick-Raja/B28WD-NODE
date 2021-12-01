@@ -1,4 +1,6 @@
+import { ObjectId } from "mongodb";
 import { client } from "./index.js";
+
 
  async function getMovies() {
     return await client
@@ -23,10 +25,11 @@ import { client } from "./index.js";
         .updateOne({ id: id }, { $set: data });
 }
  async function getMovieById(id) {
+     console.log("***", id)
     return await client
         .db("test")
         .collection("movies")
-        .findOne({ id: id });
+        .findOne({ _id: ObjectId(id) });
 }
 
 export {
