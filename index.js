@@ -4,6 +4,7 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import { moviesRouter } from "./routes/movies.js";
 import cors from "cors";
+import bcrypt from'bcrypt';
 // import { getMovies, createMovies, getMovieById, deleteMovieById, UpdateMovieById } from "./helper.js";
 
 dotenv.config(); //ALL KEYS IT WILL PUT IN PROCESS;
@@ -53,6 +54,9 @@ app.get("/", (request, response) => {
 // /movies?rating=8
 
 app.use("/movies", moviesRouter);
+
+
+// genPassword("password@123");
 
 app.listen(PORT, () => console.log("App is started in", PORT));
 

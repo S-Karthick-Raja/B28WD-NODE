@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import { client } from "./index.js";
+import bcrypt from'bcrypt';
 
 async function getMovies() {
   return await client.db("test").collection("movies").find({}).toArray();
@@ -28,10 +29,19 @@ async function getMovieById(id) {
     .findOne({ _id: ObjectId(id) });
 }
 
+async function genPassword(password){
+  const NO_OF_ROUNDS = 10;
+  const salt = await bcrypt.genSalt(NO_OF_ROUNDS);
+  console.log(salt);
+  const hashedPassword = await bcrypt.hash(password,salt);
+  console.log(hashedPassword);
+}
+
 export {
   getMovies,
   createMovies,
   deleteMovieById,
   UpdateMovieById,
   getMovieById,
+  genPassword,
 };
